@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kartal Istoc Mobil Uygulama Önizleme</title>
+    <style>
+        :root {
+            --phone-width: 360px;
+            --phone-height: 740px;
+            --bezel-color: #2c3e50;
+            --accent-color: #3498db;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            color: #333;
+        }
+
+        .header {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+            color: var(--bezel-color);
+        }
+
+        .header p {
+            margin: 5px 0;
+            opacity: 0.8;
+        }
+
+        /* Phone Container */
+        .phone-frame {
+            width: var(--phone-width);
+            height: var(--phone-height);
+            background: var(--bezel-color);
+            border-radius: 40px;
+            padding: 15px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            position: relative;
+            border: 4px solid #1a252f;
+        }
+
+        /* Speaker and Camera Bezel */
+        .phone-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 30px;
+            background: var(--bezel-color);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            z-index: 10;
+        }
+
+        /* Screen */
+        .screen {
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Stats Bar simulation */
+        .status-bar {
+            height: 25px;
+            background: #f8f9fa;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        iframe {
+            width: 100%;
+            height: calc(100% - 25px);
+            border: none;
+        }
+
+        .controls {
+            margin-top: 30px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            background: var(--accent-color);
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .info-card {
+            margin-top: 40px;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            max-width: 500px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid var(--accent-color);
+        }
+
+        .info-card h3 {
+            margin-top: 0;
+            color: var(--accent-color);
+        }
+
+        .info-card ul {
+            padding-left: 20px;
+            margin-bottom: 0;
+        }
+
+        .info-card li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Kartal Istoc Uygulama Simülatörü</h1>
+        <p>WebView uygulamanızın mobil cihazda nasıl görüneceğini test edin.</p>
+    </div>
+
+    <div class="phone-frame">
+        <div class="screen"
+            style="display: flex; flex-direction: column; align-items: center; justify-content: center; background: #f0f2f5;">
+            <div class="status-bar" style="position: absolute; top: 0; width: 100%;">
+                <span id="time">10:57</span>
+                <span>📶 🔋 100%</span>
+            </div>
+
+            <div style="padding: 30px; text-align: center;">
+                <div style="font-size: 50px; margin-bottom: 20px;">📱</div>
+                <h2 style="margin: 0 0 15px 0; color: #333;">Mobil Önizleme</h2>
+                <p style="font-size: 14px; color: #666; margin-bottom: 25px;">
+                    Sitenizin güvenlik kuralları (CSP) nedeniyle önizleme bu kutunun içinde gösterilemiyor.
+                </p>
+                <button onclick="openMobileWindow()" class="btn" style="background: #27ae60; width: 100%;">
+                    Uygulamayı Başlat
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button class="btn" onclick="document.querySelector('iframe').src+=''">Yeniden Yükle</button>
+        <a href="https://www.kartalistoc.com" target="_blank" class="btn btn-outline">Sitede Aç</a>
+    </div>
+
+    <div class="info-card">
+        <h3>Android Studio Olmadan Test Yolları:</h3>
+        <ul>
+            <li><strong>Tarayıcı Emülasyonu:</strong> Chrome/Edge'de F12 tuşuna basın ve Sol üstteki "Cihaz simgesine"
+                (Ctrl+Shift+M) tıklayarak mobil görünümü açın.</li>
+            <li><strong>Online Derleyiciler:</strong> Projeyi GitHub'a yükleyip "GitHub Actions" ile otomatik APK
+                oluşturabilirsiniz.</li>
+            <li><strong>Expo / Appetize.io:</strong> Hazırlanan APK dosyasını Appetize.io sitesine yükleyerek tarayıcıda
+                gerçek bir Android gibi çalıştırabilirsiniz.</li>
+            <li><strong>SDK Tools:</strong> Sadece komut satırı araçlarını kurarak Android Studio yüklemeden
+                <code>gradle assembleDebug</code> komutuyla APK üretebilirsiniz.
+            </li>
+        </ul>
+    </div>
+
+    <script>
+        function openMobileWindow() {
+            const width = 375;
+            const height = 812;
+            const left = (screen.width / 2) - (width / 2);
+            const top = (screen.height / 2) - (height / 2);
+
+            window.open(
+                'https://www.kartalistoc.com',
+                'KartalIstocPreview',
+                `width=${width},height=${height},top=${top},left=${left},scrollbars=yes,resizable=yes`
+            );
+        }
+
+        // Update time dynamically
+        function updateTime() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            document.getElementById('time').textContent = `${hours}:${minutes}`;
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+</body>
+
+</html>

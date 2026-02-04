@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_home"
+        android:title="Ana Sayfa" />
+
+    <item
+        android:id="@+id/nav_ibico"
+        android:icon="@drawable/ibico"
+        android:title="İbico" />
+
+    <item
+        android:id="@+id/nav_barcode"
+        android:icon="@drawable/ic_barcode"
+        android:title="Barkod" />
+
+    <item
+        android:id="@+id/nav_lists"
+        android:icon="@drawable/ic_lists"
+        android:title="Listeler" />
+
+</menu>

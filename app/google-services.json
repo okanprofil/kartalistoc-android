@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "96885533728",
+    "project_id": "kartalgrup-35fa5",
+    "storage_bucket": "kartalgrup-35fa5.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:96885533728:android:e83294ce8928b00d062045",
+        "android_client_info": {
+          "package_name": "com.kartalistoc.webview"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzerrcyk3KRWeirrXqv96RODeqXYrV4Ew"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
